@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>特別なご案内</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=block" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #faf8f5;
+      color: #1a2744;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      min-height: 100vh;
+      visibility: hidden;
+      padding-bottom: 80px;
+    }
+
+    .inner {
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* ── 波形区切り ── */
+    .wave-wrap {
+      line-height: 0;
+      overflow: hidden;
+    }
+
+    .wave-wrap svg {
+      display: block;
+      width: 100%;
+    }
+
+    /* ── 共通セクション ── */
+    .section-cream {
+      background-color: #faf8f5;
+    }
+
+    .section-white {
+      background-color: #ffffff;
+    }
+
+    .section-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #1a2744;
+      text-align: center;
+      margin-bottom: 24px;
+      letter-spacing: 0.05em;
+      line-height: 1.5;
+    }
+
+    .section-title::after {
+      content: '';
+      display: block;
+      width: 36px;
+      height: 3px;
+      background: #b8933f;
+      margin: 10px auto 0;
+      border-radius: 2px;
+    }
+
+    /* ── 1. ヘッダーバッジ ── */
+    .header-area {
+      padding: 44px 0 0;
+    }
+
+    .header-badge {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .badge {
+      display: inline-block;
+      background-color: #1a2744;
+      color: #b8933f;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      padding: 7px 24px;
+      border-radius: 999px;
+    }
+
+    /* ── 2. キャッチコピー ── */
+    .catchcopy {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .catchcopy .lead {
+      font-size: 13px;
+      color: #999999;
+      margin-bottom: 10px;
+      letter-spacing: 0.05em;
+    }
+
+    .catchcopy .headline {
+      font-size: 2.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #c8860a 0%, #f5c842 50%, #c8860a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 2px 8px rgba(200, 134, 10, 0.4));
+      margin-bottom: 14px;
+      line-height: 1.3;
+      letter-spacing: 0.05em;
+    }
+
+    .catchcopy .headline-underline {
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: #b8933f;
+      border-radius: 2px;
+      margin: 10px auto 0;
+    }
+
+    .catchcopy .sub {
+      font-size: 13px;
+      color: #666666;
+      line-height: 1.9;
+    }
+
+    /* ── 5. こんな方におすすめ ── */
+    .recommend-section {
+      padding: 36px 0 36px;
+    }
+
+    .recommend-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      padding: 28px 24px;
+    }
+
+    .recommend-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .recommend-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: #1a2744;
+      line-height: 1.6;
+    }
+
+    .recommend-list li .check {
+      color: #b8933f;
+      font-size: 16px;
+      font-weight: 700;
+      flex-shrink: 0;
+      line-height: 1.6;
+    }
+
+    /* ── 6. SECRET セクション ── */
+    .secret-section {
+      padding: 36px 0 28px;
+    }
+
+    .secret-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px rgba(26, 39, 68, 0.09);
+      padding: 26px 24px;
+      border-left: 4px solid #b8933f;
+    }
+
+    .secret-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.35em;
+      color: #1a2744;
+      margin-bottom: 14px;
+      opacity: 0.7;
+    }
+
+    .secret-card p {
+      font-size: 14px;
+      color: #444444;
+      line-height: 1.9;
+    }
+
+    .secret-card p + p {
+      margin-top: 12px;
+    }
+
+    /* ── 7. ステップセクション ── */
+    .steps-section {
+      padding: 36px 0 36px;
+    }
+
+    .steps-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .step-card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+      padding: 20px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: #b8933f;
+      color: #ffffff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      line-height: 1.1;
+    }
+
+    .step-num span {
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .step-text {
+      font-size: 15px;
+      font-weight: 500;
+      color: #1a2744;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── 3. CTA ── */
+    .cta-section {
+      text-align: center;
+      padding: 0 0 40px;
+    }
+
+    .cta-btn {
+      display: block;
+      width: 100%;
+      background-color: #06C755;
+      color: #ffffff;
+      font-family: 'Noto Sans JP', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      text-decoration: none;
+      text-align: center;
+      padding: 18px 24px;
+      border-radius: 12px;
+      letter-spacing: 0.06em;
+      border: none;
+      cursor: pointer;
+      box-shadow: 0 4px 18px rgba(6, 199, 85, 0.28);
+    }
+
+    .cta-btn:hover {
+      background-color: #05aa49;
+    }
+
+    .cta-note {
+      margin-top: 12px;
+      font-size: 11px;
+      color: #888888;
+      line-height: 1.8;
+    }
+
+    /* ── 9. 注意事項 ── */
+    .caution-section {
+      padding: 0 0 36px;
+    }
+
+    .caution-box {
+      background: #f5efe6;
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+
+    .caution-box ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .caution-box ul li {
+      font-size: 11px;
+      color: #888888;
+      line-height: 1.7;
+      padding-left: 1em;
+      text-indent: -1em;
+    }
+
+    /* ── 10. 法的情報ボックス ── */
+    .legal-section {
+      padding: 36px 0 48px;
+    }
+
+    .info-box {
+      background-color: #f5f5f5;
+      border-radius: 12px;
+      padding: 22px 20px;
+      margin-bottom: 20px;
+    }
+
+    .info-box:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-box .box-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: #1a2744;
+      margin-bottom: 16px;
+      padding-left: 12px;
+      border-left: 3px solid #b8933f;
+      line-height: 1.6;
+    }
+
+    .info-box .box-body {
+      font-size: 12px;
+      color: #444444;
+      line-height: 2.0;
+    }
+
+    .info-box .box-body p + p {
+      margin-top: 10px;
+    }
+
+    .info-box .box-body .section-heading {
+      font-weight: 700;
+      color: #1a2744;
+      margin-top: 16px;
+      margin-bottom: 4px;
+    }
+
+    /* ── フッター ── */
+    footer {
+      background-color: #1a2744;
+      padding: 28px 20px;
+      text-align: center;
+    }
+
+    .footer-links {
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.65);
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.85);
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: #b8933f;
+    }
+
+    .footer-links .sep {
+      margin: 0 12px;
+      color: rgba(255, 255, 255, 0.25);
+    }
+
+    /* ── スクロールアニメーション ── */
+    .anim {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .anim.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── 固定CTAバー ── */
+    .fixed-cta-bar {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 480px;
+      z-index: 1000;
+      padding: 12px 16px;
+      background: #ffffff;
+      box-shadow: 0 -4px 16px rgba(0, 0, 0, 0.10);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .fixed-cta-bar.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .fixed-cta-bar .cta-btn {
+      padding: 14px 24px;
+    }
+  </style>
+  <!-- TikTok Pixel Code Start -->
+  <script>
+  !function (w, d, t) {
+    w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script");n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+    ttq.load('D7FKGPBC77U2ODPGJALG');
+    ttq.page();
+  }(window, document, 'ttq');
+  </script>
+  <!-- TikTok Pixel Code End -->
+</head>
+<body>
+
+  <!-- ── トップ：クリーム背景 ── -->
+  <div class="section-cream">
+    <div class="inner">
+
+      <!-- 1. ヘッダーバッジ -->
+      <div class="header-area">
+        <div class="header-badge anim">
+          <span class="badge">完全非公開</span>
+        </div>
+
+        <!-- 2. キャッチコピー -->
+        <div class="catchcopy anim" style="transition-delay: 0.1s;">
+          <p class="lead">このページを見つけた方へ</p>
+          <p class="headline">今だけ限定の<br>特別なご案内<span class="headline-underline"></span></p>
+          <p class="sub">不特定多数の方には公開できないため、詳細はあえて伏せさせていただいております。<br>このページに辿り着いたあなたには、特別な情報をお伝えしたいと思います。</p>
+        </div>
+
+        <!-- 3. CTA ボタン -->
+        <div class="cta-section anim" id="first-cta" style="transition-delay: 0.2s;">
+          <a href="https://lin.ee/zzj5uc4" class="cta-btn" onclick="ttq.track('ClickButton')">▶ LINEで詳細を確認する</a>
+          <p class="cta-note">※無料で登録可能です。</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 波形区切り：クリーム → ホワイト -->
+  <div class="wave-wrap" style="background-color:#faf8f5;">
+    <svg viewBox="0 0 480 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="48">
+      <path d="M0,0 C120,48 360,0 480,32 L480,48 L0,48 Z" fill="#ffffff"/>
+    </svg>
+  </div>
+
+  <!-- ── ミドル：ホワイト背景 ── -->
+  <div class="section-white">
+    <div class="inner">
+
+      <!-- 5. こんな方におすすめ -->
+      <div class="recommend-section">
+        <p class="section-title anim">こんな方におすすめです</p>
+        <div class="recommend-card anim" style="transition-delay: 0.1s;">
+          <ul class="recommend-list">
+            <li class="anim" style="transition-delay: 0.1s;"><span class="check">✓</span><span>副業・在宅ワークに興味がある方</span></li>
+            <li class="anim" style="transition-delay: 0.2s;"><span class="check">✓</span><span>会社の収入だけでは不安を感じている方</span></li>
+            <li class="anim" style="transition-delay: 0.3s;"><span class="check">✓</span><span>スキマ時間を有効活用したい方</span></li>
+            <li class="anim" style="transition-delay: 0.4s;"><span class="check">✓</span><span>初心者でも始めやすい方法を探している方</span></li>
+            <li class="anim" style="transition-delay: 0.5s;"><span class="check">✓</span><span>信頼できる情報を求めている方</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- 6. SECRET セクション -->
+      <div class="secret-section">
+        <div class="secret-card anim">
+          <p class="secret-label">SECRET</p>
+          <p>本当に価値のある情報は、表に出ることはありません。</p>
+          <p>LINEにご登録いただいた方だけに、『特別なプレゼント』をご案内しています。</p>
+          <p>この情報をお届けできる人数には限りがあります。ご興味のある方はお早めにご登録ください。</p>
+        </div>
+      </div>
+
+      <!-- 7. ステップ説明 -->
+      <div class="steps-section">
+        <p class="section-title anim">受け取り方法はカンタン3ステップ</p>
+        <div class="steps-list">
+          <div class="step-card anim" style="transition-delay: 0.1s;">
+            <div class="step-num">STEP<span>1</span></div>
+            <div class="step-text">LINEを登録する</div>
+          </div>
+          <div class="step-card anim" style="transition-delay: 0.2s;">
+            <div class="step-num">STEP<span>2</span></div>
+            <div class="step-text">メッセージを受け取る</div>
+          </div>
+          <div class="step-card anim" style="transition-delay: 0.3s;">
+            <div class="step-num">STEP<span>3</span></div>
+            <div class="step-text">内容を確認して実践する</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. 注意事項 -->
+      <div class="caution-section">
+        <div class="caution-box anim">
+          <ul>
+            <li>・本情報は予告なく終了する場合があります</li>
+            <li>・内容の転載・無断共有はお控えください</li>
+            <li>・効果には個人差があります</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 波形区切り：ホワイト → クリーム -->
+  <div class="wave-wrap" style="background-color:#ffffff;">
+    <svg viewBox="0 0 480 48" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" height="48">
+      <path d="M0,32 C120,0 360,48 480,16 L480,48 L0,48 Z" fill="#faf8f5"/>
+    </svg>
+  </div>
+
+  <!-- ── ボトム：クリーム背景 ── -->
+  <div class="section-cream">
+    <div class="inner">
+
+      <!-- 10. 法的情報 -->
+      <div class="legal-section">
+
+        <!-- 特定商取引法 -->
+        <div class="info-box anim">
+          <p class="box-title">特定商取引法に基づく表記・運営者情報</p>
+          <div class="box-body">
+            <p>事業者名：Nexus Web Studio</p>
+            <p>代表：田中 健太</p>
+            <p>所在地：〒160-0022 東京都新宿区新宿2丁目1-1 レジデンス新宿 405号室</p>
+            <p>TEL：080-8227-8674</p>
+            <p>Email：ka0410kana@gmail.com</p>
+            <p>※お問い合わせはメールにて受け付けております。</p>
+          </div>
+        </div>
+
+        <!-- 個人情報 -->
+        <div class="info-box anim" style="transition-delay: 0.1s;">
+          <p class="box-title">個人情報の取り扱いについて</p>
+          <div class="box-body">
+            <p>当サイトでは、お客様の個人情報を適切に保護し、関連法令を遵守したうえで取り扱います。</p>
+
+            <p class="section-heading">【個人情報を収集・利用する目的】</p>
+            <p>・お問い合わせへの回答（本人確認を行うことを含む）<br>
+               ・当事業主が提供するサービスの案内・提供<br>
+               ・メンテナンス、重要なお知らせなど必要に応じたご連絡</p>
+
+            <p class="section-heading">【個人情報の第三者提供】</p>
+            <p>当事業主は、次に掲げる場合を除いて、あらかじめユーザーの同意を得ることなく、第三者に個人情報を提供することはありません。<br>
+               ・法令に基づく場合<br>
+               ・人の生命、身体または財産の保護のために必要がある場合</p>
+
+            <p class="section-heading">【免責事項】</p>
+            <p>当ウェブサイトからのリンクやバナーなどで移動したサイトで提供される情報、サービス等について一切の責任を負いません。また、当ウェブサイトのコンテンツ・情報について、できる限り正確な情報を提供するよう努めておりますが、正確性や安全性を保証するものではありません。情報が古くなっていることもございます。</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── フッター ── -->
+  <footer>
+    <div class="footer-links">
+      <a href="#">プライバシーポリシー</a>
+      <span class="sep">|</span>
+      <a href="#">運営者情報</a>
+    </div>
+  </footer>
+
+  <!-- ── 固定CTAバー ── -->
+  <div class="fixed-cta-bar" id="fixed-cta-bar">
+    <a href="https://lin.ee/zzj5uc4" class="cta-btn" onclick="ttq.track('ClickButton')">▶ LINEで詳細を確認する</a>
+  </div>
+
+  <script>
+    // 1. フォント読み込み完了後にbodyを表示
+    document.fonts.ready.then(function () {
+      document.body.style.visibility = 'visible';
+      ttq.track('ViewContent');
+    });
+
+    // 2. スクロールアニメーション（Intersection Observer）
+    var animObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          animObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.anim').forEach(function (el) {
+      animObserver.observe(el);
+    });
+
+    // 3. 固定CTAバー：最初のCTAが画面外に出たら表示
+    var fixedBar = document.getElementById('fixed-cta-bar');
+    var firstCta = document.getElementById('first-cta');
+
+    var ctaObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          fixedBar.classList.remove('show');
+        } else {
+          fixedBar.classList.add('show');
+        }
+      });
+    }, { threshold: 0 });
+
+    ctaObserver.observe(firstCta);
+  </script>
+
+</body>
+</html>
